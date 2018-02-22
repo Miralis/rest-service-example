@@ -37,4 +37,9 @@ public class PersonServiceImpl implements PersonService {
     public PersonDTO getPersonByLastName(String lastName) {
         return personMapper.personToPersonDTO(personRepository.findByLastName(lastName));
     }
+
+    @Override
+    public void deletePersonById(Long id) {
+        personRepository.delete(id);
+    }
 }

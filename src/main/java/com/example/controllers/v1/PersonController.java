@@ -30,4 +30,10 @@ public class PersonController {
     public PersonDTO getPersonById(@PathVariable String id) {
         return personService.getPersonById(new Long(id));
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletePerson(@PathVariable String id) {
+        personService.deletePersonById(new Long(id));
+    }
 }
