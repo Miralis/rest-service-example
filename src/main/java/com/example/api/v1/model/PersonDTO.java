@@ -1,10 +1,8 @@
 package com.example.api.v1.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class PersonDTO {
     private Long id;
     private String firstName;
