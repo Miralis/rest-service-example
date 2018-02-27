@@ -36,4 +36,10 @@ public class PersonController {
     public void deletePerson(@PathVariable String id) {
         personService.deletePersonById(new Long(id));
     }
+
+    @PutMapping({"/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public PersonDTO updatePerson(@PathVariable Long id, @RequestBody PersonDTO personDTO){
+        return personService.savePersonByDTO(id, personDTO);
+    }
 }

@@ -13,4 +13,6 @@ public interface PersonService {
     PersonDTO getPersonByLastName(String lastName);
 
     void deletePersonById(Long id);
+
+    PersonDTO savePersonByDTO(Long id, PersonDTO personDTO);
 }

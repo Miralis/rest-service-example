@@ -2,6 +2,7 @@ package com.example.services;
 
 import com.example.api.v1.mapper.PersonMapper;
 import com.example.api.v1.model.PersonDTO;
+import com.example.domain.Person;
 import com.example.repositories.PersonRepository;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,23 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void deletePersonById(Long id) {
         personRepository.delete(id);
+    }
+
+    @Override
+    public PersonDTO savePersonByDTO(Long id, PersonDTO personDTO) {
+        Person person = personMapper.personDTOToPerson(personDTO);
+        person.setId(id);
+
+        return saveAndReturnDTO(person);
+    }
+
+    private PersonDTO saveAndReturnDTO(Person person) {
+        Person savedPerson = personRepository.save(person);
+
+        PersonDTO returnDto = personMapper.personToPersonDTO(savedPerson);
+
+//        returnDto.setPersonUrl(getPersonUrl(savedPerson.getId()));
+
+        return returnDto;
     }
 }
