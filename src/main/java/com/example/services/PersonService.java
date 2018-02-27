@@ -15,4 +15,6 @@ public interface PersonService {
     void deletePersonById(Long id);
 
     PersonDTO savePersonByDTO(Long id, PersonDTO personDTO);
+
+    PersonDTO createNewPerson(PersonDTO personDTO);
 }

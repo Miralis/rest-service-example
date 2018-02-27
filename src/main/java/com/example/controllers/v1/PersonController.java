@@ -19,7 +19,7 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping()
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<PersonDTO> getAllPersons() {
         return personService.getAllPersons();
@@ -40,6 +40,18 @@ public class PersonController {
     @PutMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public PersonDTO updatePerson(@PathVariable Long id, @RequestBody PersonDTO personDTO){
+        return personService.savePersonByDTO(id, personDTO);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public PersonDTO createNewPerson(@RequestBody PersonDTO personDTO){
+        return personService.createNewPerson(personDTO);
+    }
+
+    @PatchMapping({"/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public PersonDTO patchPerson(@PathVariable Long id, @RequestBody PersonDTO personDTO){
         return personService.savePersonByDTO(id, personDTO);
     }
 }

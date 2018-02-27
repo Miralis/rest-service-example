@@ -52,6 +52,11 @@ public class PersonServiceImpl implements PersonService {
         return saveAndReturnDTO(person);
     }
 
+    @Override
+    public PersonDTO createNewPerson(PersonDTO personDTO) {
+        return saveAndReturnDTO(personMapper.personDTOToPerson(personDTO));
+    }
+
     private PersonDTO saveAndReturnDTO(Person person) {
         Person savedPerson = personRepository.save(person);
 
